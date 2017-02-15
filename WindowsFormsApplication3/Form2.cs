@@ -1,0 +1,30 @@
+﻿using Ninject;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication3
+{
+    public partial class Form2 : Form
+    {
+        private IMount Mount { get; set; }
+
+        [Inject()]
+        public Form2(IMount mount)
+        {
+            InitializeComponent();
+            Mount = mount;
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            Text = Mount.GetDateTime().ToLongDateString();
+        }
+    }
+}
